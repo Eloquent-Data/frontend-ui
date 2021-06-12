@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class MaterialDashboardAngularPage {
+export class EloquentDataDashboard {
   navigateTo() {
     return browser.get('/');
   }

@@ -1,10 +1,10 @@
-import { MaterialDashboardAngularPage } from './app.po';
+import { EloquentDataDashboard } from './app.po';
 
 describe('material-dashboard-angular App', () => {
-  let page: MaterialDashboardAngularPage;
+  let page: EloquentDataDashboard;
 
   beforeEach(() => {
-    page = new MaterialDashboardAngularPage();
+    page = new EloquentDataDashboard();
   });
 
   it('should display message saying app works', () => {
