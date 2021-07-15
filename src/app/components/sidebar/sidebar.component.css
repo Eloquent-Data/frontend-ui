@@ -2,3 +2,7 @@
     width: 90%;
     height: 30px;;
 } */
+.navbar-brand{
+    color: #000000;
+    font-weight: 400;
+}
