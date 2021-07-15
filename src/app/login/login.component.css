@@ -1,7 +1,32 @@
-.row{
-    width: 100vw;
-    height: 80vh;
+.navbar-brand{
+    color: #ffffff;
+    font-weight: 400;
 }
-footer{
-    height: 10vh;
+.full-image{
+    background-image: url("assets/img/queen.jpeg");
+    background-size: cover;
+}
+.full-color{
+    background-color: #ffffff;
+}
+.login-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    width: 60%;
+}
+
+.card-title{
+    /* font-weight: bold; */
+    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sign-link{
+    font-weight:400;
 }
