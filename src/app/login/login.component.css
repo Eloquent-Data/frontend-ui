@@ -3,7 +3,7 @@
     font-weight: 400;
 }
 .full-image{
-    background-image: url("assets/img/queen.jpeg");
+    background-image: url("assets/img/queen.png");
     background-size: cover;
 }
 .full-color{
