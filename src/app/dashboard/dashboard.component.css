@@ -1,3 +1,4 @@
+/* For mobile screens */
 @media screen and (max-width: 399px) {
     .large-progress{
         display: none

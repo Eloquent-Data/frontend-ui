@@ -5,18 +5,19 @@
 .full-image{
     background-image: url("assets/img/queen.png");
     background-size: cover;
+    background-origin: content-box;
 }
 .full-color{
     background-color: #ffffff;
 }
-.login-container{
+.signup-container{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-form{
+.signup-form{
     width: 60%;
 }
 
@@ -30,3 +31,41 @@
 .sign-link{
     font-weight:400;
 }
+
+
+/* For mobile screens */
+@media screen and (max-width: 399px) {
+    .navbar-brand{
+        color: #000000;
+        font-weight: 400;
+        margin-bottom: 70px;
+    }
+
+    .back-img{
+        display: none
+    }
+
+    .signup-form{
+        width: 80%;
+    }
+
+    .signup-container{
+        height: calc(100vh - 60px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+
+    .card-title{
+        font-size: 30px;
+    }
+}
+
+/* Non mobile screen */
+@media screen and (min-width: 400px) {
+    .mobile-logo{
+        display: none
+    }
+}
+

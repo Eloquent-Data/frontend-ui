@@ -5,6 +5,7 @@
 .full-image{
     background-image: url("assets/img/queen.png");
     background-size: cover;
+    background-origin: content-box;
 }
 .full-color{
     background-color: #ffffff;
@@ -14,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
 .login-form{
@@ -29,4 +31,39 @@
 
 .sign-link{
     font-weight:400;
+}
+
+/* For mobile screens */
+@media screen and (max-width: 399px) {
+    .navbar-brand{
+        color: #000000;
+        font-weight: 400;
+    }
+
+    .back-img{
+        display: none
+    }
+
+    .login-form{
+        width: 80%;
+    }
+
+    .login-container{
+        height: calc(100vh - 60px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+
+    .card-title{
+        font-size: 30px;
+    }
+}
+
+/* Non mobile screen */
+@media screen and (min-width: 400px) {
+    .mobile-logo{
+        display: none
+    }
 }
