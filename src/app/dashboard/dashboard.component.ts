@@ -7,6 +7,8 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  progress = 0;
+  progress_width = "width: 0%"
 
   constructor() { }
   startAnimationForLineChart(chart){
@@ -66,6 +68,13 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+    const x = 57
+    for (this.progress=0; this.progress<=x; this.progress++){
+      // setTimeout(() => {
+        this.progress+= 1;
+        this.progress_width = `width: ${this.progress}%`
+      // }, 1000/x);
+    } 
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {

@@ -1,0 +1,12 @@
+@media screen and (max-width: 399px) {
+    .large-progress{
+        display: none
+    }
+}
+
+/* Non mobile screen */
+@media screen and (min-width: 400px) {
+    .mobile-progress{
+        display: none
+    }
+}
