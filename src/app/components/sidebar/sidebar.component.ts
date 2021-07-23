@@ -11,10 +11,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/resources', title: 'Resources',  icon:'library_books', class: '' },
     { path: '/tasks', title: 'Tasks',  icon:'assignment_turned_in', class: '' },
-    { path: '/projects', title: 'Project',  icon:'bubble_chart', class: '' },
-    { path: '/blog', title: 'Blog',  icon:'library_add', class: '' },
-    { path: '/discussion', title: 'Discussion',  icon:'forum', class: '' },
-    { path: '/logout', title: 'Logout',  icon:'power_settings_new', class: 'active-pro' },
+    { path: '/projects', title: 'Projects',  icon:'bubble_chart', class: '' },
+    { path: '/blog', title: 'Blogs',  icon:'library_add', class: '' },
+    { path: '/discussion', title: 'Discussion',  icon:'forum', class: '' }
 ];
 
 @Component({
