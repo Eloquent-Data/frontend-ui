@@ -1,0 +1,12 @@
+.add{
+    background-color: #3b6e7f;
+    color: #ffffff;
+    text-align: center;
+    height: 120px;
+    width: 120px;
+}
+.add h1{
+    color: #ffffff;
+    text-align: center;
+    padding-top: 20px;
+}

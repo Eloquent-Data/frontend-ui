@@ -1,0 +1,307 @@
+<div class="main-content">
+  <div class="container">
+      <!-- welcome card -->
+      <div class="col-12">
+        <h3 class="card-title">Welcome, {{'Enock'}} <div class="user-type">{{user_type}}</div></h3> 
+      </div>
+      
+      <div class="row">
+          <div class="col-lg-7 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="user_type=='fellow'">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">fitness_center</i>
+                            </div>
+                            <p class="card-category">Tasks</p>
+                            <h3 class="card-title">3</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a [routerLink]="['/resources']">Task completed</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="user_type=='fellow'">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">info_outline</i>
+                            </div>
+                            <p class="card-category">Assessment</p>
+                            <h3 class="card-title">120.3</h3>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                  <a [routerLink]="['/resources']">Assessment score</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">folder</i>
+                            </div>
+                            <p class="card-category">Projects</p>
+                            <h3 class="card-title">5</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a [routerLink]="['/projects']">Completed projects</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">edit_note</i>
+                            </div>
+                            <p class="card-category">Blogs</p>
+                            <h3 class="card-title">5</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a [routerLink]="['/blog']">Blog posts</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Discussion</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>12/06/2021</td>
+                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">forum</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12/06/2021</td>
+                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">forum</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10/06/2021</td>
+                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">forum</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>04/06/2021</td>
+                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">forum</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>04/06/2021</td>
+                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">forum</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="card" *ngIf="user_type=='fellow'">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Leaders Board</h4>
+                        <p class="card-category">Data Science Cohort, 2021</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>Score</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Dakota Rice</td>
+                                    <td>Uganda</td>
+                                    <td>97.5</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Minerva Hooper</td>
+                                    <td>Uganda</td>
+                                    <td>97.2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Sage Rodriguez</td>
+                                    <td>Uganda</td>
+                                    <td>92</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Philip Chaney</td>
+                                    <td>Uganda</td>
+                                    <td>88.3</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Detj Briguez</td>
+                                    <td>Uganda</td>
+                                    <td>82.3</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Philip Chaney</td>
+                                    <td>Uganda</td>
+                                    <td>80.6</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Sage Rodriguez</td>
+                                    <td>Uganda</td>
+                                    <td>92</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Philip Chaney</td>
+                                    <td>Uganda</td>
+                                    <td>88.3</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Detj Briguez</td>
+                                    <td>Uganda</td>
+                                    <td>82.3</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Philip Chaney</td>
+                                    <td>Uganda</td>
+                                    <td>80.6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card" *ngIf="user_type=='member'">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Challenges</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked disabled>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>Follow Eloquent Data on Twitter</td>
+                                    <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="View Challenge" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">chevron_right</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" disabled>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>Join Eloquent Data Facebook page</td>
+                                    <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="View Challenge" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">chevron_right</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value=""  disabled>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>Sign up to GitLab
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="View Challenge" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">chevron_right</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked disabled>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>Check the discussion tab</td>
+                                    <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="View Challenge" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">chevron_right</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
