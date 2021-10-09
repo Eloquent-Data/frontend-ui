@@ -10,7 +10,7 @@
   width: 100%;
 
     .card-category:not([class*="text-"]) {
-        color: $gray-color;
+        color: $black-color;
     }
     .card-category{
         margin-top: 10px;
@@ -129,7 +129,7 @@
                 position: absolute;
                 bottom: 15px;
                 left: 15px;
-                color: $white-color;
+                color: $black-color;
                 font-size: $font-size-h4;
                 text-shadow: 0 2px 5px rgba(33, 33, 33, 0.5);
             }
@@ -167,7 +167,9 @@
     &.bg-primary,
     &.card-rotate.bg-primary .front,
     &.card-rotate.bg-primary .back{
-      background: linear-gradient(60deg, $elda-200, $elda-deep);
+      // background: linear-gradient(60deg, $elda-200, $elda-deep);
+      background: $brand-primary;
+      color: #000000;
     }
     .card-header-info .card-icon,
     .card-header-info .card-text,
@@ -175,7 +177,9 @@
     &.bg-info,
     &.card-rotate.bg-info .front,
     &.card-rotate.bg-info .back{
-      background: linear-gradient(60deg, $elda-100, $elda-200);
+      background: linear-gradient(60deg, $elda-yellow, $elda-yellow);
+      // background-color: $brand-primary;
+      color: #000000;
     }
     .card-header-success .card-icon,
     .card-header-success .card-text,
@@ -208,7 +212,9 @@
     &.bg-rose,
     &.card-rotate.bg-rose .front,
     &.card-rotate.bg-rose .back{
-      background: linear-gradient(60deg, $elda-50, $elda-50);
+      // background: linear-gradient(60deg, $elda-50, $elda-50);
+      background: $brand-primary;
+      color: #000000;
     }
 
     .card-header-primary .card-icon,
@@ -256,7 +262,7 @@
         .card-title a,
         .card-title,
         .icon i{
-            color: $white-color;
+            color: $black-color;
         }
 
         .icon i{
@@ -266,7 +272,7 @@
         .stats,
         .card-category,
         .card-description{
-            color: $white-transparent;
+            color: $black-color;
         }
 
         .author a{
@@ -484,9 +490,9 @@
       padding: 0;
 
       .card-title + .card-category{
-        color: rgba(255, 255, 255, 0.62);
+        color: $black-color;
         a {
-          color: $white-color;
+          color: rgba(255, 255, 255, 0.62);
         }
       }
 
@@ -525,7 +531,7 @@
         }
         .card-category{
             margin-bottom: 0;
-            color: rgba($white-color, .62);
+            color: rgba($black-color, .62);
         }
 
         .ct-label{
