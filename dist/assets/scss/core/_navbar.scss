@@ -146,7 +146,7 @@
     }
 
     &.bg-success{
-        @include navbar-colors($bg-success, $white-color);
+        @include navbar-colors($bg-success, $black-color);
     }
     &.bg-dark{
         @include navbar-colors($grey-900, $white-color);

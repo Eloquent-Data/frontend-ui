@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   showNotification(from, align, color, message){
     const type = color;
 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     },{
         type: type,
-        timer: 10000,
+        timer: 5000,
         placement: {
             from: from,
             align: align
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(
       res=>{
         if(res.token){
-          const color = 'success';
+          const color = 'danger';
           const message = 'Welcome'
           
           this.showNotification('bottom','right', color, message)
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
         }
       }, (err)=>{
         const color = 'danger';
-        const message = 'Email or Password is <b>Incorrect</b> <br> <br> If you are new <b>Sign Up</b>.'
+        const message = '<b>Email or Password is</b> INCORRECT <br> <br> <b>If you are new </b>REGISTER.'
         this.showNotification('bottom','right', color, message)
         
       }

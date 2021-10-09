@@ -1,49 +1,47 @@
-<div class="signup-page">
+<div class="login-page">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 full-image back-img">
-      <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']">Eloquent Data</a>
+      <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']"><img src="./assets/img/logo2.png" alt="logo" height="60px"></a>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 full-colour">
       <div class="mobile-logo">
-        <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']">Eloquent Data</a>
+        <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']"><img src="./assets/img/logo.png" alt="logo" height="60px"></a>
       </div>
       <div class="signup-container">
         <div class="signup-form">
-          <form id="SignUpValidation">
+          <form id="SignUpValidation" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <h2 class="card-title mt-4">Create an account</h2>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label for="firstname" class="bmd-label-floating"> First Name *</label>
-                  <input type="text" class="form-control" id="firstname" required="true" name="firstname">
+                  <input type="text" class="form-control" id="firstname" required="true" name="firstname" formControlName="firstName">
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label for="lastname" class="bmd-label-floating"> Last Name *</label>
-                  <input type="text" class="form-control" id="lastname" required="true" name="lastname">
+                  <input type="text" class="form-control" id="lastname" required="true" name="lastname" formControlName="lastName">
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Select Gender</label>
-                  <select class="selectpicker form-control" title="Single Select">
+                  <select class="selectpicker form-control" title="Single Select" formControlName="gender">
                     <option selected disabled> Gender </option>
-                    <option value="m"> Male </option>
-                    <option value="f"> Female </option>
-                    <option value="o"> Others </option>
+                    <option value="MALE"> Male </option>
+                    <option value="FEMALE"> Female </option>
+                    <option value="OTHER"> Others </option>
                   </select>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Choose country</label>
-                  <select class="form-control">
-                    <option selected disabled> Country </option>
-                    <option value="uganda"> Uganda </option>
-                    <option value="nigeria"> Nigeria </option>
-                    <option value="kenya"> Kenya </option>
-                    <option value="ghana"> Ghana </option>
+                  <select class="form-control" formControlName="country">
+                    <!-- <option selected disabled> Country </option> -->
+                    
+                    <option *ngFor="let country of africanCountries" value={{country.name}}> {{country.name}} </option>
                   </select>
                 </div>
               </div>
@@ -51,37 +49,53 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="email" class="bmd-label-floating"> Email *</label>
-                  <input type="email" class="form-control" id="email" required="true" name="emailaddress">
+                  <input type="email" class="form-control" id="email" required="true" name="email" formControlName="userEmail">
                 </div>
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-12 ">
                 <div class="form-group">
                   <label for="examplePassword" class="bmd-label-floating"> Password *</label>
-                  <input type="password" class="form-control" id="examplePassword" required="true" name="password">
+                  <input type="password" class="form-control" id="examplePassword" required="true" name="password" formControlName="password">
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 ">
                 <div class="form-group">
                   <label for="examplePassword2" class="bmd-label-floating">Confirm Password *</label>
-                  <input type="password" class="form-control" id="examplePassword2" required="true" name="password2">
+                  <input type="password" class="form-control" id="examplePassword2" required="true" name="password2" formControlName="password2">
                 </div>
               </div>
             </div>
 
             <div class="form-check mt-4">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value=""> I agree to the&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="terms" formControlName="agreement"> I agree to the&nbsp;
                 <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
               </label> <a [routerLink]="['/login']" routerLinkActive="router-link-active" ><u>Term of Service</u></a>
             </div>
+              <small *ngIf="!registerForm.value.agreement">Agree to the terms of service to continue</small>
 
-            <button type="submit" class="btn btn-primary btn-block mt-4" [routerLink]="['/']">Create an account</button>
+            <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!registerForm.valid">Create an account</button>
 
             <div class="mt-4">Have an existing account? <a class="sign-link" [routerLink]="['/login']">Log in</a></div>
           </form>
+          <ul *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)">
+            <li *ngIf="registerForm.controls.firstName.errors?.required">First name is required</li>
+            <li *ngIf="registerForm.controls.lastName.errors?.required">Last name is required</li>
+            <li *ngIf="registerForm.controls.gender.errors?.required">Specify your gender</li>
+            <li *ngIf="registerForm.controls.country.errors?.required">Specify your country</li>
+            <li *ngIf="registerForm.controls.userEmail.errors?.required">Email is required</li>
+            <li *ngIf="registerForm.controls.password.errors?.required">Password is required</li>
+            <li *ngIf="registerForm.controls.password2.errors?.required">Confirm your password</li>
+            <li *ngIf="registerForm.controls.userEmail.errors?.email">Enter valid email.</li>
+            <li *ngIf="registerForm.controls.password.errors?.minlength">Password must be at least 8 characters.</li>
+            <li *ngIf="registerForm.controls.password2.errors?.minlength">Confirm password must be at least 8 characters.</li>
+          </ul>
+          <ul>
+            <li *ngIf="registerForm.value.password!=registerForm.value.password2">Password does not match</li>
+          </ul>
         </div>
       </div>
     </div>

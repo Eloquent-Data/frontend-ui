@@ -3,8 +3,12 @@
     font-weight: 400;
 }
 .full-image{
-    background-image: url("assets/img/queen.png");
-    background-size: cover;
+    background: #f5a21f;
+    background-image: url("/assets/img/intro-image.png");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
     background-origin: content-box;
 }
 .full-color{

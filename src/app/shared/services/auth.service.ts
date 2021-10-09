@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Login, LoginResponse, SignUp } from './data.interface';
+import { LoginResponse, RegisterResponse } from '../interfaces/data.interface';
 
 
 @Injectable({
@@ -66,7 +66,7 @@ export class AuthService {
     }
 
     register(payload){
-      return this.http.post<SignUp>(
+      return this.http.post<RegisterResponse>(
         `${environment.restApiUrl}/api/auth/register`,
         payload
       );

@@ -1,11 +1,11 @@
 <div class="login-page">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 full-image back-img">
-      <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']">Eloquent Data</a>
+      <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']"><img src="./assets/img/logo2.png" alt="logo" height="60px"></a>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 full-colour">
       <div class="mobile-logo">
-        <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']">Eloquent Data</a>
+        <a class="navbar-brand mt-4 ml-4" [routerLink]="['/']"><img src="./assets/img/logo.png" alt="logo" height="60px"></a>
       </div>
       <div class="login-container">
         <div class="login-form">
@@ -22,15 +22,15 @@
             </div>
             <div class="small"><a [routerLink]="['/recovery']">Forgot password?</a></div>
 
-            <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!loginForm.valid" >Login</button>
+            <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!loginForm.valid">Login</button>
 
-            <div class="mt-4">New to Eloquent Data? <a class="sign-link" [routerLink]="['/register']">Sign Up</a></div>
+            <div class="mt-4">New to Eloquent Data? <a class="sign-link" [routerLink]="['/register']">Register</a></div>
           </form>
 
           <ul *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)">
             <li *ngIf="loginForm.controls.username.errors?.required">Email is required</li>
-            <li *ngIf="loginForm.controls.password.errors?.required">Password is required.</li>
-            <li *ngIf="loginForm.controls.username.errors?.email">Enter valid email.</li>
+            <li *ngIf="loginForm.controls.password.errors?.required">Password is required</li>
+            <li *ngIf="loginForm.controls.username.errors?.email">Enter valid email</li>
             <li *ngIf="loginForm.controls.password.errors?.minlength">Password must be at least 8 characters.</li>
           </ul>
         </div>

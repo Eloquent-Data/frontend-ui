@@ -11,7 +11,7 @@ export interface LoginResponse{
     id: number;
 }
 
-export interface SignUp {
+export interface Register {
     country: string;
     firstName: string;
     gender: string;
@@ -20,3 +20,9 @@ export interface SignUp {
     userCategory: string;
     userEmail: string;
 }
+
+export interface RegisterResponse{
+    message: string;
+    success: boolean;
+    responseCode: string;
+  }

@@ -52,7 +52,7 @@
     }
 
     &.popover-success{
-        @include popover-color($success-color, $white-color);
+        @include popover-color($success-color, $black-color);
     }
 }
 
