@@ -22,6 +22,8 @@
             </div>
             <div class="small"><a [routerLink]="['/recovery']">Forgot password?</a></div>
 
+            <ngx-spinner></ngx-spinner>
+
             <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!loginForm.valid">Login</button>
 
             <div class="mt-4">New to Eloquent Data? <a class="sign-link" [routerLink]="['/register']">Register</a></div>

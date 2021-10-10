@@ -17,6 +17,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    NgxSpinnerModule,
   ],
   declarations: [
     AppComponent,

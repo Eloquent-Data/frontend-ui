@@ -135,6 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! app/shared/services/auth.service */ "IYfF");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -150,11 +151,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(fb, authService, router) {
+    function LoginComponent(fb, authService, router, spinner) {
         this.fb = fb;
         this.authService = authService;
         this.router = router;
+        this.spinner = spinner;
         this.loginForm = this.fb.group({
             username: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].email]],
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(7)],
@@ -188,8 +191,10 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
+        this.spinner.show();
         this.authService.login(this.loginForm.value).subscribe(function (res) {
             if (res.token) {
+                _this.spinner.hide();
                 var color = 'danger';
                 var message = 'Welcome';
                 _this.showNotification('bottom', 'right', color, message);
@@ -197,6 +202,7 @@ var LoginComponent = /** @class */ (function () {
                 _this.router.navigateByUrl('/');
             }
         }, function (err) {
+            _this.spinner.hide();
             var color = 'danger';
             var message = '<b>Email or Password is</b> INCORRECT <br> <br> <b>If you are new </b>REGISTER.';
             _this.showNotification('bottom', 'right', color, message);
@@ -205,7 +211,8 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
         { type: app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerService"] }
     ]; };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
@@ -215,7 +222,8 @@ var LoginComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
             app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -4101,12 +4109,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_signup_signup_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/signup/signup.component */ "o97b");
 /* harmony import */ var _pages_login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/login/login.component */ "D8EZ");
 /* harmony import */ var _pages_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/page-not-found/page-not-found.component */ "BgzB");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4132,6 +4142,7 @@ var AppModule = /** @class */ (function () {
                 _components_components_module__WEBPACK_IMPORTED_MODULE_6__["ComponentsModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"],
                 _app_routing__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                ngx_spinner__WEBPACK_IMPORTED_MODULE_12__["NgxSpinnerModule"],
             ],
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
@@ -4173,7 +4184,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"login-page\">\n  <div class=\"row\">\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-image back-img\">\n      <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo2.png\" alt=\"logo\" height=\"60px\"></a>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-colour\">\n      <div class=\"mobile-logo\">\n        <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo.png\" alt=\"logo\" height=\"60px\"></a>\n      </div>\n      <div class=\"signup-container\">\n        <div class=\"signup-form\">\n          <form id=\"SignUpValidation\" [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n            <h2 class=\"card-title mt-4\">Create an account</h2>\n            <div class=\"row\">\n              <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                <div class=\"form-group\">\n                  <label for=\"firstname\" class=\"bmd-label-floating\"> First Name *</label>\n                  <input type=\"text\" class=\"form-control\" id=\"firstname\" required=\"true\" name=\"firstname\" formControlName=\"firstName\">\n                </div>\n              </div>\n              <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                <div class=\"form-group\">\n                  <label for=\"lastname\" class=\"bmd-label-floating\"> Last Name *</label>\n                  <input type=\"text\" class=\"form-control\" id=\"lastname\" required=\"true\" name=\"lastname\" formControlName=\"lastName\">\n                </div>\n              </div>\n              <div class=\"col-6\">\n                <div class=\"form-group\">\n                  <label>Select Gender</label>\n                  <select class=\"selectpicker form-control\" title=\"Single Select\" formControlName=\"gender\">\n                    <option selected disabled> Gender </option>\n                    <option value=\"MALE\"> Male </option>\n                    <option value=\"FEMALE\"> Female </option>\n                    <option value=\"OTHER\"> Others </option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"col-6\">\n                <div class=\"form-group\">\n                  <label>Choose country</label>\n                  <select class=\"form-control\" formControlName=\"country\">\n                    <!-- <option selected disabled> Country </option> -->\n                    \n                    <option *ngFor=\"let country of africanCountries\" value={{country.name}}> {{country.name}} </option>\n                  </select>\n                </div>\n              </div>\n\n              <div class=\"col-12\">\n                <div class=\"form-group\">\n                  <label for=\"email\" class=\"bmd-label-floating\"> Email *</label>\n                  <input type=\"email\" class=\"form-control\" id=\"email\" required=\"true\" name=\"email\" formControlName=\"userEmail\">\n                </div>\n              </div>\n\n              <div class=\"col-lg-6 col-md-6 col-sm-12 \">\n                <div class=\"form-group\">\n                  <label for=\"examplePassword\" class=\"bmd-label-floating\"> Password *</label>\n                  <input type=\"password\" class=\"form-control\" id=\"examplePassword\" required=\"true\" name=\"password\" formControlName=\"password\">\n                </div>\n              </div>\n              <div class=\"col-lg-6 col-md-6 col-sm-12 \">\n                <div class=\"form-group\">\n                  <label for=\"examplePassword2\" class=\"bmd-label-floating\">Confirm Password *</label>\n                  <input type=\"password\" class=\"form-control\" id=\"examplePassword2\" required=\"true\" name=\"password2\" formControlName=\"password2\">\n                </div>\n              </div>\n            </div>\n\n            <div class=\"form-check mt-4\">\n              <label class=\"form-check-label\">\n                <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"terms\" formControlName=\"agreement\"> I agree to the&nbsp;\n                <span class=\"form-check-sign\">\n                  <span class=\"check\"></span>\n                </span>\n              </label> <a [routerLink]=\"['/login']\" routerLinkActive=\"router-link-active\" ><u>Term of Service</u></a>\n            </div>\n              <small *ngIf=\"!registerForm.value.agreement\">Agree to the terms of service to continue</small>\n\n            <button type=\"submit\" class=\"btn btn-primary btn-block mt-4\" [disabled]=\"!registerForm.valid\">Create an account</button>\n\n            <div class=\"mt-4\">Have an existing account? <a class=\"sign-link\" [routerLink]=\"['/login']\">Log in</a></div>\n          </form>\n          <ul *ngIf=\"registerForm.invalid && (registerForm.dirty || registerForm.touched)\">\n            <li *ngIf=\"registerForm.controls.firstName.errors?.required\">First name is required</li>\n            <li *ngIf=\"registerForm.controls.lastName.errors?.required\">Last name is required</li>\n            <li *ngIf=\"registerForm.controls.gender.errors?.required\">Specify your gender</li>\n            <li *ngIf=\"registerForm.controls.country.errors?.required\">Specify your country</li>\n            <li *ngIf=\"registerForm.controls.userEmail.errors?.required\">Email is required</li>\n            <li *ngIf=\"registerForm.controls.password.errors?.required\">Password is required</li>\n            <li *ngIf=\"registerForm.controls.password2.errors?.required\">Confirm your password</li>\n            <li *ngIf=\"registerForm.controls.userEmail.errors?.email\">Enter valid email.</li>\n            <li *ngIf=\"registerForm.controls.password.errors?.minlength\">Password must be at least 8 characters.</li>\n            <li *ngIf=\"registerForm.controls.password2.errors?.minlength\">Confirm password must be at least 8 characters.</li>\n          </ul>\n          <ul>\n            <li *ngIf=\"registerForm.value.password!=registerForm.value.password2\">Password does not match</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"login-page\">\n  <div class=\"row\">\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-image back-img\">\n      <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo2.png\" alt=\"logo\" height=\"60px\"></a>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-colour\">\n      <div class=\"mobile-logo\">\n        <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo.png\" alt=\"logo\" height=\"60px\"></a>\n      </div>\n      <div class=\"signup-container\">\n        <div class=\"signup-form\">\n          <form id=\"SignUpValidation\" [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n            <h2 class=\"card-title mt-4\">Create an account</h2>\n            <div class=\"row\">\n              <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                <div class=\"form-group\">\n                  <label for=\"firstname\" class=\"bmd-label-floating\"> First Name *</label>\n                  <input type=\"text\" class=\"form-control\" id=\"firstname\" required=\"true\" name=\"firstname\" formControlName=\"firstName\">\n                </div>\n              </div>\n              <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                <div class=\"form-group\">\n                  <label for=\"lastname\" class=\"bmd-label-floating\"> Last Name *</label>\n                  <input type=\"text\" class=\"form-control\" id=\"lastname\" required=\"true\" name=\"lastname\" formControlName=\"lastName\">\n                </div>\n              </div>\n              <div class=\"col-6\">\n                <div class=\"form-group\">\n                  <label>Select Gender</label>\n                  <select class=\"selectpicker form-control\" title=\"Single Select\" formControlName=\"gender\">\n                    <option selected disabled> Gender </option>\n                    <option value=\"MALE\"> Male </option>\n                    <option value=\"FEMALE\"> Female </option>\n                    <option value=\"OTHER\"> Others </option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"col-6\">\n                <div class=\"form-group\">\n                  <label>Choose country</label>\n                  <select class=\"form-control\" formControlName=\"country\">\n                    <!-- <option selected disabled> Country </option> -->\n                    \n                    <option *ngFor=\"let country of africanCountries\" value={{country.name}}> {{country.name}} </option>\n                  </select>\n                </div>\n              </div>\n\n              <div class=\"col-12\">\n                <div class=\"form-group\">\n                  <label for=\"email\" class=\"bmd-label-floating\"> Email *</label>\n                  <input type=\"email\" class=\"form-control\" id=\"email\" required=\"true\" name=\"email\" formControlName=\"userEmail\">\n                </div>\n              </div>\n\n              <div class=\"col-lg-6 col-md-6 col-sm-12 \">\n                <div class=\"form-group\">\n                  <label for=\"examplePassword\" class=\"bmd-label-floating\"> Password *</label>\n                  <input type=\"password\" class=\"form-control\" id=\"examplePassword\" required=\"true\" name=\"password\" formControlName=\"password\">\n                </div>\n              </div>\n              <div class=\"col-lg-6 col-md-6 col-sm-12 \">\n                <div class=\"form-group\">\n                  <label for=\"examplePassword2\" class=\"bmd-label-floating\">Confirm Password *</label>\n                  <input type=\"password\" class=\"form-control\" id=\"examplePassword2\" required=\"true\" name=\"password2\" formControlName=\"password2\">\n                </div>\n              </div>\n            </div>\n\n            <div class=\"form-check mt-4\">\n              <label class=\"form-check-label\">\n                <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"terms\" formControlName=\"agreement\"> I agree to the&nbsp;\n                <span class=\"form-check-sign\">\n                  <span class=\"check\"></span>\n                </span>\n              </label> <a [routerLink]=\"['/login']\" routerLinkActive=\"router-link-active\" ><u>Term of Service</u></a>\n            </div>\n            <small *ngIf=\"!registerForm.value.agreement\">Agree to the terms of service to continue</small>\n\n            <ngx-spinner></ngx-spinner>\n\n            <button type=\"submit\" class=\"btn btn-primary btn-block mt-4\" [disabled]=\"!registerForm.valid\">Create an account</button>\n\n            <div class=\"mt-4\">Have an existing account? <a class=\"sign-link\" [routerLink]=\"['/login']\">Log in</a></div>\n          </form>\n          <ul *ngIf=\"registerForm.invalid && (registerForm.dirty || registerForm.touched)\">\n            <li *ngIf=\"registerForm.controls.firstName.errors?.required\">First name is required</li>\n            <li *ngIf=\"registerForm.controls.lastName.errors?.required\">Last name is required</li>\n            <li *ngIf=\"registerForm.controls.gender.errors?.required\">Specify your gender</li>\n            <li *ngIf=\"registerForm.controls.country.errors?.required\">Specify your country</li>\n            <li *ngIf=\"registerForm.controls.userEmail.errors?.required\">Email is required</li>\n            <li *ngIf=\"registerForm.controls.password.errors?.required\">Password is required</li>\n            <li *ngIf=\"registerForm.controls.password2.errors?.required\">Confirm your password</li>\n            <li *ngIf=\"registerForm.controls.userEmail.errors?.email\">Enter valid email.</li>\n            <li *ngIf=\"registerForm.controls.password.errors?.minlength\">Password must be at least 8 characters.</li>\n            <li *ngIf=\"registerForm.controls.password2.errors?.minlength\">Confirm password must be at least 8 characters.</li>\n          </ul>\n          <ul>\n            <li *ngIf=\"registerForm.value.password!=registerForm.value.password2\">Password does not match</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>");
 
 /***/ }),
 
@@ -4540,6 +4551,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var app_shared_data_countries__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! app/shared/data/countries */ "EEd4");
 /* harmony import */ var app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! app/shared/services/auth.service */ "IYfF");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4556,11 +4568,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SignupComponent = /** @class */ (function () {
-    function SignupComponent(fb, authService, router) {
+    function SignupComponent(fb, authService, router, spinner) {
         this.fb = fb;
         this.authService = authService;
         this.router = router;
+        this.spinner = spinner;
         this.registerForm = this.fb.group({
             firstName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             lastName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
@@ -4612,7 +4626,7 @@ var SignupComponent = /** @class */ (function () {
     };
     SignupComponent.prototype.onSubmit = function () {
         var _this = this;
-        console.log(this.registerForm.value);
+        this.spinner.show();
         var formValue = this.registerForm.value;
         var payload = {
             country: formValue.country,
@@ -4624,12 +4638,13 @@ var SignupComponent = /** @class */ (function () {
             userEmail: formValue.userEmail
         };
         if (!this.registerForm.value.agreement) {
+            this.spinner.hide();
             var color = 'danger';
             var message = 'Please agree to our terms of service';
             this.showNotification('bottom', 'right', color, message);
         }
         else if (formValue.password != formValue.password2) {
-            console.log(this.registerForm.value.password != this.registerForm.value.password);
+            this.spinner.hide();
             var color = 'danger';
             var message = 'Password does not match';
             this.showNotification('bottom', 'right', color, message);
@@ -4637,17 +4652,20 @@ var SignupComponent = /** @class */ (function () {
         else {
             this.authService.register(payload).subscribe(function (res) {
                 if (res.success) {
+                    _this.spinner.hide();
                     var color = 'danger';
                     var message = res.message + '<br> Kindly check your email';
                     _this.showNotification('bottom', 'right', color, message);
                     _this.router.navigateByUrl('/login');
                 }
                 else {
+                    _this.spinner.hide();
                     var color = 'danger';
                     var message = res.message;
                     _this.showNotification('bottom', 'right', color, message);
                 }
             }, function (err) {
+                _this.spinner.hide();
                 var color = 'danger';
                 var message = err.message;
                 _this.showNotification('bottom', 'right', color, message);
@@ -4657,7 +4675,8 @@ var SignupComponent = /** @class */ (function () {
     SignupComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
         { type: app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_7__["NgxSpinnerService"] }
     ]; };
     SignupComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
@@ -4667,7 +4686,8 @@ var SignupComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
             app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_7__["NgxSpinnerService"]])
     ], SignupComponent);
     return SignupComponent;
 }());
@@ -4724,7 +4744,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"login-page\">\n  <div class=\"row\">\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-image back-img\">\n      <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo2.png\" alt=\"logo\" height=\"60px\"></a>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-colour\">\n      <div class=\"mobile-logo\">\n        <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo.png\" alt=\"logo\" height=\"60px\"></a>\n      </div>\n      <div class=\"login-container\">\n        <div class=\"login-form\">\n          <form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n            <h2 class=\"card-title mt-4\">Login</h2>\n            <div class=\"form-group\">\n              <label for=\"exampleEmails\" class=\"bmd-label-floating\"> Email Address *</label>\n              <input type=\"email\" class=\"form-control\" id=\"exampleEmails\" required=\"true\" name=\"email\" formControlName=\"username\">\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"examplePasswords\" class=\"bmd-label-floating\"> Password *</label>\n              <input type=\"password\" class=\"form-control\" id=\"examplePasswords\" required=\"true\" name=\"password\" formControlName=\"password\">\n            </div>\n            <div class=\"small\"><a [routerLink]=\"['/recovery']\">Forgot password?</a></div>\n\n            <button type=\"submit\" class=\"btn btn-primary btn-block mt-4\" [disabled]=\"!loginForm.valid\">Login</button>\n\n            <div class=\"mt-4\">New to Eloquent Data? <a class=\"sign-link\" [routerLink]=\"['/register']\">Register</a></div>\n          </form>\n\n          <ul *ngIf=\"loginForm.invalid && (loginForm.dirty || loginForm.touched)\">\n            <li *ngIf=\"loginForm.controls.username.errors?.required\">Email is required</li>\n            <li *ngIf=\"loginForm.controls.password.errors?.required\">Password is required</li>\n            <li *ngIf=\"loginForm.controls.username.errors?.email\">Enter valid email</li>\n            <li *ngIf=\"loginForm.controls.password.errors?.minlength\">Password must be at least 8 characters.</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"login-page\">\n  <div class=\"row\">\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-image back-img\">\n      <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo2.png\" alt=\"logo\" height=\"60px\"></a>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-12 full-colour\">\n      <div class=\"mobile-logo\">\n        <a class=\"navbar-brand mt-4 ml-4\" [routerLink]=\"['/']\"><img src=\"./assets/img/logo.png\" alt=\"logo\" height=\"60px\"></a>\n      </div>\n      <div class=\"login-container\">\n        <div class=\"login-form\">\n          <form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n            <h2 class=\"card-title mt-4\">Login</h2>\n            <div class=\"form-group\">\n              <label for=\"exampleEmails\" class=\"bmd-label-floating\"> Email Address *</label>\n              <input type=\"email\" class=\"form-control\" id=\"exampleEmails\" required=\"true\" name=\"email\" formControlName=\"username\">\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"examplePasswords\" class=\"bmd-label-floating\"> Password *</label>\n              <input type=\"password\" class=\"form-control\" id=\"examplePasswords\" required=\"true\" name=\"password\" formControlName=\"password\">\n            </div>\n            <div class=\"small\"><a [routerLink]=\"['/recovery']\">Forgot password?</a></div>\n\n            <ngx-spinner></ngx-spinner>\n\n            <button type=\"submit\" class=\"btn btn-primary btn-block mt-4\" [disabled]=\"!loginForm.valid\">Login</button>\n\n            <div class=\"mt-4\">New to Eloquent Data? <a class=\"sign-link\" [routerLink]=\"['/register']\">Register</a></div>\n          </form>\n\n          <ul *ngIf=\"loginForm.invalid && (loginForm.dirty || loginForm.touched)\">\n            <li *ngIf=\"loginForm.controls.username.errors?.required\">Email is required</li>\n            <li *ngIf=\"loginForm.controls.password.errors?.required\">Password is required</li>\n            <li *ngIf=\"loginForm.controls.username.errors?.email\">Enter valid email</li>\n            <li *ngIf=\"loginForm.controls.password.errors?.minlength\">Password must be at least 8 characters.</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 

@@ -75,7 +75,9 @@
                 </span>
               </label> <a [routerLink]="['/login']" routerLinkActive="router-link-active" ><u>Term of Service</u></a>
             </div>
-              <small *ngIf="!registerForm.value.agreement">Agree to the terms of service to continue</small>
+            <small *ngIf="!registerForm.value.agreement">Agree to the terms of service to continue</small>
+
+            <ngx-spinner></ngx-spinner>
 
             <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="!registerForm.valid">Create an account</button>
 

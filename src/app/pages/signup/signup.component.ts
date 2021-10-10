@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { countries } from 'app/shared/data/countries';
 import { Register } from 'app/shared/interfaces/data.interface';
 import { AuthService } from 'app/shared/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 declare var $: any;
@@ -33,7 +34,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -78,7 +80,7 @@ export class SignupComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.registerForm.value);
+    this.spinner.show();
 
     const formValue = this.registerForm.value;
 
@@ -93,33 +95,40 @@ export class SignupComponent implements OnInit {
     }
 
     if(!this.registerForm.value.agreement){
+      this.spinner.hide();
+
       let color = 'danger';
       let message = 'Please agree to our terms of service'
       this.showNotification('bottom','right', color, message)
 
     }else if(formValue.password!=formValue.password2){
-        console.log(this.registerForm.value.password!=this.registerForm.value.password);
+      this.spinner.hide();
         
-        let color = 'danger';
-        let message = 'Password does not match'
-        this.showNotification('bottom','right', color, message)
+      let color = 'danger';
+      let message = 'Password does not match'
+      this.showNotification('bottom','right', color, message)
     }
     else{
       this.authService.register(payload).subscribe(
         res=>{
           if(res.success){
+            this.spinner.hide();
+
             const color = 'danger';
             const message = res.message + '<br> Kindly check your email'
-
             this.showNotification('bottom','right', color, message)
             this.router.navigateByUrl('/login')
           }
           else{
+            this.spinner.hide();
+
             const color = 'danger';
             const message = res.message
             this.showNotification('bottom','right', color, message)
           }
         }, (err)=>{
+          this.spinner.hide();
+
           const color = 'danger';
           const message = err.message
           this.showNotification('bottom','right', color, message)

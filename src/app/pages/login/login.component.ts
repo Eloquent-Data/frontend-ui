@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/shared/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 declare var $: any;
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
@@ -54,9 +56,11 @@ export class LoginComponent implements OnInit {
 }
   
   onSubmit(){
+    this.spinner.show();
     this.authService.login(this.loginForm.value).subscribe(
       res=>{
         if(res.token){
+          this.spinner.hide();
           const color = 'danger';
           const message = 'Welcome'
           
@@ -65,6 +69,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/')
         }
       }, (err)=>{
+        this.spinner.hide();
         const color = 'danger';
         const message = '<b>Email or Password is</b> INCORRECT <br> <br> <b>If you are new </b>REGISTER.'
         this.showNotification('bottom','right', color, message)
